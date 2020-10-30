@@ -19,6 +19,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils" />
       <recent name="$PROJECT_DIR$/../zombie-api/schema" />
     </key>
   </component>
@@ -41,7 +42,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603925438577</updated>
-      <workItem from="1603925439940" duration="5730000" />
+      <workItem from="1603925439940" duration="6276000" />
+      <workItem from="1604005902214" duration="10000" />
+      <workItem from="1604005923280" duration="8949000" />
     </task>
     <servers />
   </component>
