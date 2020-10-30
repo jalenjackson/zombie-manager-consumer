@@ -28,10 +28,8 @@ export const GET_LOCATION = gql`
 
 export const GET_ZOMBIES = gql`
     {
-      zombies{
-        name
-        id
-        location
+      zombies {
+        response
       }
     }  
 `;
