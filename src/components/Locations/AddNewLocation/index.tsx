@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { Zombie } from '../../../utils/commonInterfaces';
 import { CREATE_NEW_LOCATION } from '../../../utils/mutations';
 import Button from 'antd/lib/button';
+import Modal from 'antd/lib/modal';
 import Form from 'antd/lib/form';
 import Input from 'antd/lib/input';
 import alterRecoilState from '../../../utils/alterRecoilState';
@@ -24,8 +25,6 @@ function AddNewLocation(props: Props) {
     const [locationState, setLocationState] = useRecoilState<LocationState>(locationStateAtom);
     const [form] = Form.useForm();
     const [createNewLocation] = useMutation(CREATE_NEW_LOCATION);
-
-    if (!locationState.addNewLocationModalVisibility) return null;
 
     function handleCancel() {
         form.resetFields();
@@ -52,7 +51,18 @@ function AddNewLocation(props: Props) {
     }
 
     return (
-        <div>
+        <Modal
+            title="Basic Modal"
+            visible={locationState.addNewLocationModalVisibility}
+            onCancel={handleCancel}
+            footer={[
+                <Button key='Cancel' onClick={handleCancel}>
+                    Cancel
+                </Button>,
+                <Button key='submit' type='primary' onClick={onSubmit}>
+                    Submit
+                </Button>,
+            ]}>
             <Form
                 form={form}
                 name='add-new-location-form'
@@ -65,18 +75,7 @@ function AddNewLocation(props: Props) {
                 </Form.Item>
             </Form>
             <ZombieSelection zombiesData={get(props, 'zombiesData.data.zombies.response', null)} />
-            <Button
-                key='cancel'
-                onClick={handleCancel}>
-                Cancel
-            </Button>,
-            <Button
-                key='submit'
-                type='primary'
-                onClick={onSubmit}>
-                Submit
-            </Button>
-        </div>
+        </Modal>
     )
 }
 
