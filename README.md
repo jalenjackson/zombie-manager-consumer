@@ -4,6 +4,11 @@
 2. Make sure the graphql node server is running before starting
 3. Run yarn && yarn start
 
+Tech Stack:
+TypeScript, @apollo/client & graphql (querying the gql server), Recoil (local state management)
+
+I normally use Redux, Redux-Saga, and Immutabale for state management, but in this case since most data is fetched and changes through the graaphql server and the in memory cache with apollo client, we dont need to use redux at all. 
+
 Features:
 
 - You can create new locations
