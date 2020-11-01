@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43b177e9-1cf9-4927-83b6-be7da1a88516" name="Default Changelist" comment="" />
+    <list default="true" id="43b177e9-1cf9-4927-83b6-be7da1a88516" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,6 +13,9 @@
   </component>
   <component name="FavoritesManager">
     <favorites_list name="zombie-manager-consumer" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jWgokAfZysAs53Ly4BFpSA4lH7" />
   <component name="PropertiesComponent">
@@ -23,10 +29,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/../zombie-api/schema/Resolvers/Mutation/API" />
       <recent name="$PROJECT_DIR$/src/fonts" />
       <recent name="$PROJECT_DIR$/src/images" />
-      <recent name="$PROJECT_DIR$/public/images" />
       <recent name="$PROJECT_DIR$/public/fonts" />
     </key>
   </component>
@@ -52,11 +58,23 @@
       <workItem from="1603925439940" duration="6276000" />
       <workItem from="1604005902214" duration="10000" />
       <workItem from="1604005923280" duration="9227000" />
-      <workItem from="1604081994451" duration="30630000" />
+      <workItem from="1604081994451" duration="31662000" />
+      <workItem from="1604205715754" duration="12000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
