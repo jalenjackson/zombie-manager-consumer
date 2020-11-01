@@ -85,6 +85,7 @@ function Location(props: Props) {
             <div
                 ref={drop}
                 className='location-container'>
+                {props.zombies ? <span>{props.zombies.length} Zombies</span> : <span>No Zombies In This Location Yet</span>}
                 <Row style={{ paddingBottom: 70 }} gutter={16}>
                     {renderZombies()}
                 </Row>
