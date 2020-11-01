@@ -1,6 +1,7 @@
 import React from 'react';
 import clone from 'lodash/clone';
 import alterRecoilState from '../../../../utils/alterRecoilState';
+import { CheckOutlined } from '@ant-design/icons';
 import { Zombie as ZombieType } from '../../../../utils/commonInterfaces';
 import { useRecoilState } from 'recoil';
 import { locationStateAtom, LocationState } from '../../atoms';
@@ -26,8 +27,8 @@ function Zombie(props: Props) {
     }
 
     return (
-        <div onClick={() => onZombieClicked(props.zombie)}>
-            {props.zombie.name} {zombieFoundIndex !== -1 && <span>Selected</span>}
+        <div style={{ cursor: 'pointer' }} onClick={() => onZombieClicked(props.zombie)}>
+            {props.zombie.name} {zombieFoundIndex !== -1 && <CheckOutlined />}
         </div>
     )
 }

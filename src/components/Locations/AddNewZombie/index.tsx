@@ -4,6 +4,9 @@ import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
 import message from 'antd/lib/message';
 import alterRecoilState from '../../../utils/alterRecoilState';
+import invoke from 'lodash/invoke';
+import get from 'lodash/get';
+import { SaveOutlined } from '@ant-design/icons';
 import { useRecoilState } from 'recoil';
 import { LocationState, locationStateAtom } from '../atoms';
 import { useMutation } from '@apollo/client';
@@ -18,6 +21,15 @@ function AddNewZombie(props: Props) {
     const [locationState, setLocationState] = useRecoilState<LocationState>(locationStateAtom);
     const [inputValue, updateInputValue] = React.useState('');
     const [createNewZombie] = useMutation(CREATE_NEW_ZOMBIE);
+    const inputRef = React.useRef(null);
+
+    React.useEffect(() => {
+        if (locationState.addNewZombieModalVisibility) {
+            if (get(inputRef, 'current')) {
+                invoke(inputRef, 'current.focus');
+            }
+        }
+    }, [locationState.addNewZombieModalVisibility]);
 
     function handleCancel() {
         return alterRecoilState(setLocationState, {
@@ -53,12 +65,13 @@ function AddNewZombie(props: Props) {
                 <Button key='Cancel' onClick={handleCancel}>
                     Cancel
                 </Button>,
-                <Button key='submit' type='primary' onClick={onSubmit}>
+                <Button icon={<SaveOutlined />} key='submit' type='primary' onClick={onSubmit}>
                     Submit
                 </Button>,
             ]}>
             <label style={{ display: 'block', marginBottom: 5 }}>Name</label>
             <Input
+                ref={inputRef}
                 onPressEnter={onSubmit}
                 value={inputValue}
                 onChange={handleInputChange} type='text' placeholder='Enter name here...' />

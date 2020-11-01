@@ -2,6 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import { locationStateAtom, LocationState } from '../atoms';
 import { useMutation } from '@apollo/client';
+import { SaveOutlined } from '@ant-design/icons'
 import { Zombie } from '../../../utils/commonInterfaces';
 import { CREATE_NEW_LOCATION } from '../../../utils/mutations';
 import Button from 'antd/lib/button';
@@ -52,14 +53,14 @@ function AddNewLocation(props: Props) {
 
     return (
         <Modal
-            title="Basic Modal"
+            title="Create New Location"
             visible={locationState.addNewLocationModalVisibility}
             onCancel={handleCancel}
             footer={[
                 <Button key='Cancel' onClick={handleCancel}>
                     Cancel
                 </Button>,
-                <Button key='submit' type='primary' onClick={onSubmit}>
+                <Button key='submit' type='primary' icon={<SaveOutlined />} onClick={onSubmit}>
                     Submit
                 </Button>,
             ]}>
@@ -74,7 +75,10 @@ function AddNewLocation(props: Props) {
                     <Input />
                 </Form.Item>
             </Form>
-            <ZombieSelection zombiesData={get(props, 'zombiesData.data.zombies.response', null)} />
+            <div style={{ marginTop: 5 }}>
+                <label style={{ display: 'block', marginBottom: 5 }}>Add Zombies To Location</label>
+                <ZombieSelection zombiesData={get(props, 'zombiesData.data.zombies.response', null)} />
+            </div>
         </Modal>
     )
 }

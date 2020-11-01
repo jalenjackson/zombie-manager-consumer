@@ -43,7 +43,7 @@ function Locations(props: Props) {
     }
 
     return (
-        <Row gutter={16}>
+        <Row style={{ marginTop: 15 }} gutter={16}>
             {renderFreeZombies()}
             {renderItem()}
         </Row>

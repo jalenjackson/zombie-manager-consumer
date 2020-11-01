@@ -9,8 +9,8 @@ import { locationStateAtom, LocationState } from './atoms';
 import { Zombie } from '../../utils/commonInterfaces';
 import { useDrop } from 'react-dnd'
 import { useMutation } from '@apollo/client';
-import { MOVE_ZOMBIE_TO_LOCATION } from '../../utils/mutations';
-import { PlusOutlined } from '@ant-design/icons';
+import { MOVE_ZOMBIE_TO_LOCATION, DELETE_LOCATION } from '../../utils/mutations';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 interface Props {
     keyName: string
@@ -23,7 +23,9 @@ interface Props {
 function Location(props: Props) {
     const [editing, updateEditing] = React.useState(false);
     const [moveZombieToLocation] = useMutation(MOVE_ZOMBIE_TO_LOCATION);
+    const [deleteLocationGQL] = useMutation(DELETE_LOCATION);
     const setLocationsState = useSetRecoilState<LocationState>(locationStateAtom);
+    const [isHovering, updateIsHovering] = React.useState(false);
 
     const [_, drop] = useDrop({
         accept: 'zombie',
@@ -35,6 +37,13 @@ function Location(props: Props) {
                 }   });
 
             props.zombiesData.refetch();
+        },
+        collect: (monitor) => {
+            if (monitor.isOver()) {
+                updateIsHovering(true);
+            } else {
+                updateIsHovering(false);
+            }
         }
     });
 
@@ -59,15 +68,24 @@ function Location(props: Props) {
         });
     }
 
+    async function deleteLocation() {
+        await deleteLocationGQL({
+            variables: {
+                locationID: props.locationID
+        }   });
+
+        props.zombiesData.refetch();
+    }
+
     return (
-        <Col span={6}>
+        <Col xs={24} sm={24} md={12} lg={6} xl={6} className='location-col' style={isHovering ? { transform: 'scale(1.05)' } : {}}>
             <div className='location-name'>
-                <h2>{props.keyName}</h2>
+                <h2>{props.keyName} {props.locationID !== '0' && <DeleteOutlined onClick={deleteLocation} />}</h2>
             </div>
             <div
                 ref={drop}
                 className='location-container'>
-                <Row gutter={16}>
+                <Row style={{ paddingBottom: 70 }} gutter={16}>
                     {renderZombies()}
                 </Row>
                 <div className='location-container-footer'>

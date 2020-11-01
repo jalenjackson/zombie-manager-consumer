@@ -24,3 +24,19 @@ export const CREATE_NEW_ZOMBIE = gql`
     }  
 `;
 
+export const DELETE_ZOMBIE = gql`
+  mutation deleteZombie($zombieID: ID!) {
+      deleteZombie(zombieID: $zombieID) {
+        id
+      }
+    }
+`;
+
+export const DELETE_LOCATION = gql`
+  mutation deleteLocation($locationID: ID!) {
+      deleteLocation(locationID: $locationID) {
+        id
+      }
+    }
+`;
+

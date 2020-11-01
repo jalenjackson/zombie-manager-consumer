@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zombie as ZombieType } from '../../../../utils/commonInterfaces';
+import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import Zombie from './Zombie';
 
 interface Props {
@@ -9,29 +10,32 @@ interface Props {
 
 function ZombieByLocation(props: Props) {
     const [showZombies, updateShowZombies] = React.useState(false);
+    const hasZombies = props.zombieChildren && props.zombieChildren && props.zombieChildren.length > 0;
 
     function onLocationClicked() {
         updateShowZombies(!showZombies);
     }
 
-    function renderZombieChildren(zombieChildren: Array<ZombieType>) {
-        if (zombieChildren && zombieChildren.length > 0) {
-            return zombieChildren.map(zombie => {
+    function renderZombieChildren() {
+        if (hasZombies) {
+            return props.zombieChildren.map(zombie => {
                 return (
                     <Zombie key={zombie.id} zombie={zombie}/>
                 )
             })
-        } else {
-            return (
-                <span>No Zombies</span>
-            )
         }
     }
 
+    const cursorPointer = { cursor: 'pointer' };
+
     return (
         <div>
-            <span onClick={onLocationClicked}>{props.zombieKeyName}</span>
-            {showZombies && renderZombieChildren(props.zombieChildren)}
+            {hasZombies && (showZombies ? <CaretDownOutlined style={cursorPointer} onClick={onLocationClicked} /> : <CaretRightOutlined style={cursorPointer} onClick={onLocationClicked} />)} <span style={cursorPointer} onClick={onLocationClicked}>{props.zombieKeyName}</span>
+            {showZombies && (
+                <div className='zombie-by-location-zombies'>
+                    {renderZombieChildren()}
+                </div>
+            )}
         </div>
     )
 }
