@@ -7,6 +7,7 @@
 Features:
 
 - You can create new locations
+- See how many zombies are in each location
 - When creating a new location, you can move zombies to the new location at the same time you are creating it
 - You can move zombies to any location by dragging and dropping
 - You can delete any location
